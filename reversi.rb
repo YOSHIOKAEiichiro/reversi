@@ -33,10 +33,19 @@ class Banmen
 
   def evaluation(x, y)
     iro = @banmen[x][y]
-    y.upto(7) do |y2|
-      break if @banmen[x][y2] == iro && flag
-      flag = true if @banmen[x][y2] != iro && @banmen[x][y2] != BLANK
+    target_y = nil
+    (y + 1).upto(7) do |y2|
+      if @banmen[x][y2] == iro
+        target_y = y2
+        break
+      end
+      # flag = true if @banmen[x][y2] != iro && @banmen[x][y2] != BLANK
     end
+    @banmen[x][target_y] = reverse(iro)
+  end
+
+  def reverse(iro)
+    iro == BLACK ? WHITE : BLACK
   end
 end
 
