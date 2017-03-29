@@ -4,6 +4,7 @@ class Banmen
   BLACK = '⚫️'
   WHITE = '⚪️'
   BLANK = '👽'
+
   def initialize()
     @banmen = Array.new(8) { Array.new(8) { BLANK } }
     @banmen[3][3] = WHITE
@@ -30,7 +31,11 @@ class Banmen
     evaluation
   end
 
-  def evaluation
+  def evaluation(x, y)
+    iro = @banmen[x][y]
+    x.upto(7) do |x2|
+      @banmen
+    end
   end
 end
 
