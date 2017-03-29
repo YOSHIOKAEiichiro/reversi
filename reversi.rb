@@ -30,13 +30,16 @@ class Banmen
     raise "Already exsists" if [WHITE, BLACK].include?(@banmen[x][y])
 
     banmen[x][y] = WHITE
-    evaluation
+    evaluation(x, y)
   end
 
   def evaluation(x, y)
     iro = @banmen[x][y]
     target_y = nil
     (y + 1).upto(7) do |y2|
+      if @banmen[x][y2].nil?
+        break
+      end
       if @banmen[x][y2] == iro
         break
       end
@@ -44,7 +47,7 @@ class Banmen
 
       # flag = true if @banmen[x][y2] != iro && @banmen[x][y2] != BLANK
     end
-    @banmen[x][target_y] = reverse(iro)
+    @banmen[x][target_y] = reverse(@banmen[x][target_y])
   end
 
   def reverse(iro)
@@ -75,5 +78,6 @@ end
 banmen = Banmen.new
 banmen.pretty_print
 banmen.put_black(3, 2)
+banmen.put_white(2, 2)
 banmen.pretty_print
 
