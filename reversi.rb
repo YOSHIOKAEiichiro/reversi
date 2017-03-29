@@ -1,9 +1,8 @@
 require 'pp'
-require 'table_print'
 
 class Banmen
   def initialize()
-    @banmen = Array.new(8) { Array.new(8) { nil } }
+    @banmen = Array.new(8) { Array.new(8) { BLANK } }
     @banmen[3][3] = Ishi.new(false)
     @banmen[3][4] = Ishi.new(true)
     @banmen[4][3] = Ishi.new(false)
@@ -14,10 +13,6 @@ class Banmen
     pp @banmen
   end
 
-  def to_s
-    tp @banmen
-  end
-
   def at(x,y)
     @banmen[x][y]
   end
@@ -25,14 +20,14 @@ class Banmen
   def put_black(x, y)
     raise "Already exsists" unless at(x,y).nil?
 
-    banmen[x][y] = Ishi.new(true)
+    banmen[x][y] = BLACK
     evaluation(x, y)
   end
 
   def put_white(x, y)
     raise "Already exsists" unless at(x,y).nil?
 
-    banmen[x][y] = Ishi.new(false)
+    banmen[x][y] = WHITE
     evaluation
   end
 
@@ -81,4 +76,4 @@ end
 banmen = Banmen.new
 pp banmen
 banmen.put_black(3, 2)
-puts banmen.to_s
+pp banmen
