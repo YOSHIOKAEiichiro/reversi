@@ -2,11 +2,14 @@ require 'pp'
 
 class Banmen
   BLACK = 1
+  WHITE = 2
+
   def initialize()
     @banmen = Array.new(8) { Array.new(8) }
-
-    @banmen[][]
-
+    @banmen[3][3] = WHITE
+    @banmen[3][4] = BLACK
+    @banmen[4][3] = BLACK
+    @banmen[4][4] = WHITE
   end
 
   def banmen
@@ -48,4 +51,5 @@ end
 
 banmen = Banmen.new
 pp banmen
-
+banmen.put_black(3, 2)
+pp banmen
