@@ -21,7 +21,7 @@ class Banmen
     raise "Already exsists" if [WHITE, BLACK].include?(@banmen[x][y])
 
     banmen[x][y] = BLACK
-    evaluation
+    evaluation(x, y)
   end
 
   def put_white(x, y)
@@ -33,8 +33,9 @@ class Banmen
 
   def evaluation(x, y)
     iro = @banmen[x][y]
-    x.upto(7) do |x2|
-      @banmen
+    y.upto(7) do |y2|
+      break if @banmen[x][y2] == iro && flag
+      flag = true if @banmen[x][y2] != iro && @banmen[x][y2] != BLANK
     end
   end
 end
