@@ -1,4 +1,6 @@
+require 'bundler/setup'
 require 'pp'
+require 'terminal-table'
 
 class Banmen
   BLACK = '⚫️'
@@ -36,9 +38,10 @@ class Banmen
     target_y = nil
     (y + 1).upto(7) do |y2|
       if @banmen[x][y2] == iro
-        target_y = y2
         break
       end
+      target_y = y2
+
       # flag = true if @banmen[x][y2] != iro && @banmen[x][y2] != BLANK
     end
     @banmen[x][target_y] = reverse(iro)
@@ -47,6 +50,11 @@ class Banmen
   def reverse(iro)
     iro == BLACK ? WHITE : BLACK
   end
+
+  def pretty_print
+    puts(::Terminal::Table.new(rows: @banmen))
+  end
+
 end
 
 class Player
@@ -65,6 +73,7 @@ class Game
 end
 
 banmen = Banmen.new
-pp banmen
+banmen.pretty_print
 banmen.put_black(3, 2)
-pp banmen
+banmen.pretty_print
+
