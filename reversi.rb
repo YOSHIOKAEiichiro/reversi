@@ -1,11 +1,11 @@
 require 'pp'
 
 class Banmen
-  BLACK = 1
-  WHITE = 2
-
+  BLACK = '⚫️'
+  WHITE = '⚪️'
+  BLANK = '👽'
   def initialize()
-    @banmen = Array.new(8) { Array.new(8) }
+    @banmen = Array.new(8) { Array.new(8) { BLANK } }
     @banmen[3][3] = WHITE
     @banmen[3][4] = BLACK
     @banmen[4][3] = BLACK
@@ -17,14 +17,14 @@ class Banmen
   end
 
   def put_black(x, y)
-    raise ArgumentError("Already exsists") unless @banmen[x][y].nil?
+    raise "Already exsists" if [WHITE, BLACK].include?(@banmen[x][y])
 
     banmen[x][y] = BLACK
     evaluation
   end
 
   def put_white(x, y)
-    raise ArgumentError("Already exsists") unless @banmen[x][y].nil?
+    raise "Already exsists" if [WHITE, BLACK].include?(@banmen[x][y])
 
     banmen[x][y] = WHITE
     evaluation
