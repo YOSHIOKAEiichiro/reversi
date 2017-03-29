@@ -1,10 +1,1 @@
-class Ishi
-  def initialize
-  end
-  def shiro?
-    true
-  end
-end
-
-ishi = Ishi.new
-ishi.shiro?
+banmen = Array.new(9) { Array.new(9) }
