@@ -1,11 +1,16 @@
+require 'pp'
+
 class Banmen
   BLACK = 1
   def initialize()
     @banmen = Array.new(8) { Array.new(8) }
+
+    @banmen[][]
+
   end
 
   def banmen
-    puts @banmen
+    pp @banmen
   end
 
   def put_black(x, y)
@@ -41,5 +46,6 @@ class Game
   end
 end
 
-banmen = Banmen.new(8, 8)
-p banmen
+banmen = Banmen.new
+pp banmen
+
