@@ -1,16 +1,28 @@
 class Banmen
-  def initialize(yoko, tate)
-    @yoko = yoko
-    @tate = tate
-    @banmen = Array.new(@yoko) { Array.new(@tate) }
+  BLACK = 1
+  def initialize()
+    @banmen = Array.new(8) { Array.new(8) }
   end
 
-  def oku(yoko, tate, ishi)
-    @banmen[yoko][tate] = ishi
-    reverse
+  def banmen
+    puts @banmen
   end
 
-  def reverse
+  def put_black(x, y)
+    raise ArgumentError("Already exsists") unless @banmen[x][y].nil?
+
+    banmen[x][y] = BLACK
+    evaluation
+  end
+
+  def put_white(x, y)
+    raise ArgumentError("Already exsists") unless @banmen[x][y].nil?
+
+    banmen[x][y] = WHITE
+    evaluation
+  end
+
+  def evaluation
   end
 end
 
